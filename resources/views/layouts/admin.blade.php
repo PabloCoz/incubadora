@@ -16,6 +16,8 @@
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+    @livewireStyles
 </head>
 
 <body class="font-sans antialiased bg-white">
@@ -38,61 +40,54 @@
         <div class="h-full px-3 py-4 overflow-y-auto bg-gray-200 shadow-lg shadow-gray-600">
             <a href="{{ route('admin.home') }}" class="flex items-center pl-2.5 mb-5">
                 <img src="https://flowbite.com/docs/images/logo.svg" class="h-6 mr-3 sm:h-7" alt="Flowbite Logo" />
-                <span class="self-center text-xl font-semibold">Flowbite</span>
+                <span class="self-center text-xl font-semibold">UNACH</span>
             </a>
             <ul class="space-y-2 font-medium">
                 <li>
-                    <a href="#"
-                        class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100">
+                    <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100">
                         <i class="fa-solid fa-house"></i>
                         <span class="ml-3">Inicio</span>
                     </a>
                 </li>
                 <li>
-                    <a href="#"
-                        class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100">
+                    <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100">
                         <i class="fa-solid fa-book"></i>
                         <span class="flex-1 ml-3">Cursos</span>
 
                     </a>
                 </li>
                 <li>
-                    <a href="#"
-                        class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100">
+                    <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100">
                         <i class="fa-solid fa-screwdriver-wrench"></i>
                         <span class="flex-1 ml-3">Talleres</span>
                     </a>
                 </li>
                 <li>
-                    <a href="#"
-                        class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100">
+                    <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100">
                         <i class="fa-solid fa-chalkboard-user"></i>
                         <span class="flex-1 ml-3">Capacitaciones</span>
                     </a>
                 </li>
                 <li>
-                    <a href="#"
-                        class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100">
+                    <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100">
                         <i class="fa-solid fa-group-arrows-rotate"></i>
                         <span class="flex-1 ml-3">Desafios</span>
                     </a>
                 </li>
                 <li>
-                    <a href="#"
-                        class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100">
+                    <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100">
                         <i class="fa-solid fa-users"></i>
                         <span class="flex-1 ml-3">Alumnos</span>
                     </a>
                 </li>
                 <li>
-                    <a href="#"
+                    <a href="{{ route('admin.postulants') }}"
                         class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100">
                         <i class="fa-solid fa-user-clock"></i>
-                        <span class="flex-1 ml-3">Alumnos Pendientes</span>
+                        <span class="flex-1 ml-3">Postulantes</span>
                     </a>
                 <li>
-                    <a href="#"
-                        class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100">
+                    <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100">
                         <i class="fa-solid fa-circle-left"></i>
                         <span class="flex-1 ml-3">Cerrar Sesión</span>
                     </a>
@@ -101,13 +96,13 @@
         </div>
     </aside>
 
-    <div class="p-4 sm:ml-64">
+    <div class="p-8 sm:ml-64">
         <main>
             {{ $slot }}
         </main>
     </div>
 
-
+    @livewireScripts
 </body>
 
 </html>

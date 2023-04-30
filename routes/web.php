@@ -31,6 +31,10 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/validate-pay', [PostulantController::class, 'validatedView'])->name('validate-pay');
 
+Route::get('/remember-code', [PostulantController::class, 'rememberCode'])->name('remember-code');
+
+Route::post('/request-code', [PostulantController::class, 'codeRequest'])->name('request-code');
+
 Route::post('/validated-pay', [PostulantController::class, 'validatedPay'])->name('validated-pay');
 
 Route::post('/postulants', [PostulantController::class, 'store'])->name('postulants.store');

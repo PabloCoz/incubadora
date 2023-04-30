@@ -48,26 +48,38 @@ class PostulantController extends Controller
       }
    }
 
-   public function validatedPay(Request $request)
-   {
-      try {
-         $validator = Validator::make($request->all(), [
-            'code' => 'required',
-            'img' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-         ]);
-
-         if ($validator->fails()) {
-            return redirect()->route('validate-pay')->withErrors($validator);
-         }
-
-         return redirect()->route('home')->with('success', 'Su codigo de validacion despues del pago es: ');
-      } catch (\Exception $e) {
-         return redirect()->route('validate-pay')->with('error', $e->getMessage());
-      }
-   }
-
    public function validatedView(): View
    {
       return view('validated');
+   }
+
+   public function rememberCode(): View
+   {
+      return view('remember-code');
+   }
+
+   public function codeRequest(Request $request)
+   {
+      try {
+         $request->validate(
+            [
+               'email' => 'required|email',
+            ],
+            [
+               'email.required' => 'El campo email es requerido',
+               'email.email' => 'El campo email debe ser un email valido',
+            ]
+         );
+
+         $postulant = Postulant::where('email', $request->email)->where('validated', false)->first();
+
+         if (!$postulant) {
+            throw new \Exception('No se encontro ningun postulante con ese email');
+         }
+
+         return redirect()->route('remember-code')->with('success', 'Su codigo se envio a su correo electronico');
+      } catch (\Exception $e) {
+         return redirect()->route('remember-code')->with('error', $e->getMessage());
+      }
    }
 }
