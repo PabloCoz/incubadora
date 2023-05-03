@@ -1,6 +1,5 @@
 <?php
 
-use App\Models\Course;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -12,17 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('courses', function (Blueprint $table) {
+        Schema::create('lessons', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->string('subtitle');
+            $table->string('name');
             $table->text('description');
-            $table->integer('hours');
-            $table->enum('status', [Course::ELABORACION, Course::PUBLICADO])->default(Course::ELABORACION);
-            $table->string('slug');
-            $table->foreignId('schedule_id')->constrained();
+            $table->foreignId('module_id')->constrained()->onDelete('cascade');
             $table->foreignId('modality_id')->constrained();
-            $table->foreignId('user_id')->constrained();
             $table->timestamps();
         });
     }
@@ -32,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('courses');
+        Schema::dropIfExists('lessons');
     }
 };

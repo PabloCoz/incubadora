@@ -11,6 +11,5 @@ class Course extends Model
     protected $guarded = ['id', 'status'];
     protected $withCount = ['students', 'reviews'];
     const ELABORACION = 1;
-    const REVISIÓN = 2;
-    const PUBLICADO = 3;
+    const PUBLICADO = 2;
 }
